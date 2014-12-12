@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"static",
+				"staticu	static URL"
+			],
+			[
 				"defa",
 				"defaulttags	module"
 			],
@@ -79,31 +83,67 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "manage.py",
-			"settings":
-			{
-				"buffer_size": 252,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 132.0,
+		"height": 52.0,
 		"selected_items":
 		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"pick",
+				"Color Picker"
+			],
+			[
+				"color",
+				"Tweak Colorcode to current color scheme"
+			],
+			[
+				"",
+				"AngularJS: Toggle - Disable Built-in Element Completions"
+			],
+			[
+				"w",
+				"HTML: Wrap Selection With Tag"
+			],
+			[
+				"reinde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"blame",
+				"Github: Blame"
+			],
+			[
+				"git",
+				"Github: Repository"
+			],
+			[
+				"anaconda",
+				"Anaconda: Set Python interpreter"
+			],
+			[
+				"django",
+				"Set Syntax: Python Django"
+			],
+			[
+				"set python",
+				"Set Syntax: Python"
+			],
 			[
 				"close ",
 				"Project: Close"
 			],
 			[
 				"reind",
-				"Indentation: Reindent Lines"
-			],
-			[
-				"reinde",
 				"Indentation: Reindent Lines"
 			],
 			[
@@ -121,14 +161,6 @@
 			[
 				"r",
 				"File: Revert"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
-			],
-			[
-				"remove",
-				"Package Control: Remove Package"
 			],
 			[
 				"wrap",
@@ -195,14 +227,6 @@
 				"Project: Save As"
 			],
 			[
-				"git",
-				"Github: Open File"
-			],
-			[
-				"blame",
-				"Github: Blame"
-			],
-			[
 				"gitbu",
 				"Github: Blame"
 			],
@@ -213,10 +237,6 @@
 			[
 				"projce",
 				"Project: Add Folder"
-			],
-			[
-				"anaconda",
-				"Anaconda: Set Python interpreter"
 			],
 			[
 				"close",
@@ -237,10 +257,6 @@
 			[
 				"menu",
 				"View: Toggle Menu"
-			],
-			[
-				"",
-				"Anaconda: Show error list"
 			],
 			[
 				"reload",
@@ -342,9 +358,27 @@
 		"side_bar_visible": false,
 		"status_bar_visible": true
 	},
+	"expanded_folders":
+	[
+		"/home/dotcat/Dokumenty/Projekty/Python/base_site"
+	],
 	"file_history":
 	[
+		"/home/dotcat/Dokumenty/Projekty/Python/base_site/content_site/static/simple_portfolio/css/custom.css",
+		"/home/dotcat/Dokumenty/Projekty/Python/base_site/content_site/models.py",
 		"/home/dotcat/Dokumenty/Projekty/Python/base_site/base_site/settings.py",
+		"/home/dotcat/Dokumenty/Projekty/Python/base_site/content_site/templates/simple_portfolio/index_plugin.html",
+		"/home/dotcat/Dokumenty/Projekty/Python/base_site/base_site/templates/base.html",
+		"/home/dotcat/.config/sublime-text-3/Packages/Color Highlighter/ColorHighlighter.sublime-settings",
+		"/home/dotcat/Dokumenty/Projekty/Python/base_site/base_site/templates/sidebar_left.html",
+		"/home/dotcat/Dokumenty/Projekty/Python/base_site/content_site/admin.py",
+		"/home/dotcat/Dokumenty/Projekty/Python/base_site/content_site/tests.py",
+		"/home/dotcat/Dokumenty/Projekty/Python/base_site/base_site.sublime-project",
+		"/home/dotcat/Dokumenty/Projekty/Python/base_site/content_site/views.py",
+		"/home/dotcat/Dokumenty/Projekty/Python/base_site/content_site/static/simple_portfolio/js/vendor/placeholder.js",
+		"/home/dotcat/Dokumenty/Projekty/Python/base_site/content_site/templates/content_site/Simple one page portfolio/robots.txt",
+		"/home/dotcat/Dokumenty/Projekty/Python/base_site/manage.py",
+		"/home/dotcat/Dokumenty/Projekty/Python/base_site/.gitignore",
 		"/home/dotcat/Dokumenty/Projekty/Python/todo/todo.sublime-project",
 		"/home/dotcat/Dokumenty/Projekty/Python/todo/todo/templates/base.html",
 		"/home/dotcat/Dokumenty/Projekty/Python/todo/tasklist/admin.py",
@@ -425,6 +459,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"about",
+			"img",
+			"src=\"img/",
 			"time",
 			"pers",
 			"duration",
@@ -449,6 +486,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"src={% static \"simple_portfolio/img/",
 			"5.4.7",
 			"@AngularJS"
 		],
@@ -461,50 +499,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "manage.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 252,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
-							"vintage":
-							{
-								"action": null,
-								"action_count": "",
-								"mode": "mode_normal",
-								"motion": null,
-								"motion_count": "",
-								"must_capture_register_name": false,
-								"partial_sequence": "",
-								"register": "\"",
-								"sequence": "",
-								"xpos": 0
-							}
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -559,6 +555,34 @@
 		"selected_items":
 		[
 			[
+				"custom",
+				"content_site/static/simple_portfolio/css/custom.css"
+			],
+			[
+				"base",
+				"base_site/templates/base.html"
+			],
+			[
+				"templates",
+				"base_site/templates/sidebar_left.html"
+			],
+			[
+				"simple",
+				"content_site/templates/simple_portfolio/index.html"
+			],
+			[
+				"se",
+				"base_site/settings.py"
+			],
+			[
+				"mod",
+				"content_site/models.py"
+			],
+			[
+				"settin",
+				"base_site/settings.py"
+			],
+			[
 				"admin",
 				"tasklist/admin.py"
 			],
@@ -609,10 +633,6 @@
 			[
 				"index.html",
 				"tasklist/templates/tasklist/app/index.html"
-			],
-			[
-				"settin",
-				"todo/settings.py"
 			],
 			[
 				"urls",
@@ -672,7 +692,7 @@
 	"selected_group": 0,
 	"settings":
 	{
-		"_vintageous_last_buffer_search": "cms",
+		"_vintageous_last_buffer_search": "port2",
 		"_vintageous_last_char_search_command": "vi_f",
 		"_vintageous_last_character_search": "f",
 		"_vintageous_reset_during_init": true,
