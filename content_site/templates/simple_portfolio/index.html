@@ -67,7 +67,7 @@
     <section class="jumbo">
         <div class="row">
             <div class="large-12 columns">
-                <h1>We Love Great Design</h1>
+                <h1>We Love Great Design !</h1>
                 <p class="text-center">
                     <a href="http://epickwebdesign.com" class="medium button radius">Check Us Out!</a>
                 </p>
@@ -75,13 +75,18 @@
             </div>
         </div>
     </section>
+    {% placeholder "ttt" %}
 
     <section id="about">
         <div class="row">
             <div class="small-12 large-12 columns">
                 <div class="text-center">
+                    {% placeholder "welcome" or %}
                     <h2>Welcome to our site!</h2>
                     <p>Morbi auctor lacinia mi nec suscipit. Vivamus eget dui dignissim, fermentum leo nec, suscipit nunc. Etiam feugiat lacinia sapien, lacinia hendrerit orci fermentum vitae. Quisque posuere vitae elit vitae ornare. Praesent ornare quam id. Morbi auctor lacinia mi nec suscipit. Vivamus eget dui dignissim, fermentum leo nec, suscipit nunc. Etiam feugiat lacinia sapien, lacinia hendrerit orci fermentum vitae. Quisque posuere vitae elit vitae ornare. Praesent ornare quam id.</p>
+                    {% endplaceholder %}
+                    {% static_placeholder "wwe" %}
+                    <img class="th" src="https://dl-web.dropbox.com/get/Aplikacje/dotcat/klucz.jpg?_subject_uid=368372309&w=AAAHfkPzYP2ID7TzdW9c8KrBzO8cRYDADDQFY2n7y3fPNQ">
                 </div>
                 <div>
                     <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
@@ -188,40 +193,37 @@
                             <p>&copy; Copyright Your Name here.</p>
                         </div>
                         <div class="large-7 push-2 columns text-center">
-                            <!-- Please Leave this link out of respect for the designer -->
-                            <p>Designed By:
-                                <a href="http://epickwebdesign.com">E Pick Web Design</a>
-                            </p>
-                        </div>
+                        </p>
                     </div>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
 
-        {% addtoblock "js" %}
-        <script src={% static "simple_portfolio/js/vendor/jquery.js" %}></script>
-        <script src={% static "simple_portfolio/js/foundation.min.js" %}></script>
-        <script>
-            $(document).foundation();
-        </script>
-        <script>
-            $(function() {
-                $('a[href*=#]:not([href=#])').click(function() {
-                    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-                        var target = $(this.hash);
-                        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                        if (target.length) {
-                            $('html,body').animate({
-                                scrollTop: target.offset().top
-                            }, 1000);
-                            return false;
-                        }
+    {% addtoblock "js" %}
+    <script src={% static "simple_portfolio/js/vendor/jquery.js" %}></script>
+    <script src={% static "simple_portfolio/js/foundation.min.js" %}></script>
+    <script>
+        $(document).foundation();
+    </script>
+    <script>
+        $(function() {
+            $('a[href*=#]:not([href=#])').click(function() {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        $('html,body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000);
+                        return false;
                     }
-                });
+                }
             });
-        </script>
-        {% endaddtoblock "js" %}
-        {% render_block "js" %}
-    </body>
+        });
+    </script>
+    {% endaddtoblock "js" %}
+    {% render_block "js" %}
+</body>
 
-    </html>
+</html>

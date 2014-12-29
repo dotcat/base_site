@@ -33,9 +33,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 
-
-
-
 ROOT_URLCONF = 'base_site.urls'
 
 WSGI_APPLICATION = 'base_site.wsgi.application'
@@ -45,10 +42,8 @@ WSGI_APPLICATION = 'base_site.wsgi.application'
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
-
 LANGUAGE_CODE = 'pl'
 
 TIME_ZONE = 'Europe/Warsaw'
@@ -144,12 +139,12 @@ INSTALLED_APPS = (
 )
 
 LANGUAGES = (
-    ## Customize this
+    # Customize this
     ('pl', gettext('pl')),
 )
 
 CMS_LANGUAGES = {
-    ## Customize this
+    # Customize this
     'default': {
         'public': True,
         'hide_untranslated': False,
@@ -167,7 +162,7 @@ CMS_LANGUAGES = {
 }
 
 CMS_TEMPLATES = (
-    ## Customize this
+    # Customize this
     ('fullwidth.html', 'Fullwidth'),
     ('sidebar_left.html', 'Sidebar Left'),
     ('sidebar_right.html', 'Sidebar Right'),
@@ -180,5 +175,6 @@ CMS_PLACEHOLDER_CONF = {}
 
 DATABASES = {
     'default':
-        {'NAME': 'project.db', 'HOST': 'localhost', 'PASSWORD': '', 'USER': '', 'ENGINE': 'django.db.backends.sqlite3', 'PORT': ''}
+        {'NAME': 'project.db', 'HOST': 'localhost', 'PASSWORD': '',
+            'USER': '', 'ENGINE': 'django.db.backends.sqlite3', 'PORT': ''}
 }
