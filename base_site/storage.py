@@ -1,6 +1,14 @@
-from django.core.files import Storage
+from django.core.files.storage import Storage
 from django.conf import settings
 from django.core.files import File
+import nudrive
+import requests
+import StringIO
+
+
+def retrieve_file(url):
+    response = requests.get(url)
+    return StringIO.StringIO(response.content)
 
 
 class GoogleDriveStorage(Storage):
@@ -12,8 +20,10 @@ class GoogleDriveStorage(Storage):
             base_url = settings.MEDIA_URL
 
         def _open(self, name, mode='rb'):
-            return File(open(self.path(name), mode))
+            f = retrieve_file(name)
+            # ContentFIle if error
+            return File(open(f, mode))
 
         def _save(self, name, content):
-        	# TODO: Dokończyć: Integracja z Django
+            
             pass

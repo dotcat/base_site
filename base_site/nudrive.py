@@ -1,67 +1,160 @@
 from oauth2client.client import SignedJwtAssertionCredentials
 from apiclient.http import MediaFileUpload
 from apiclient.discovery import build
-# import pprint
 import httplib2
 
 
-client_email = '911984682386-rr5rg1e4m5v6j0mk89jniqcon26pgjic@developer\
-.gserviceaccount.com'
+class File(object):
 
-with open("nudrive.pem") as f:
-    private_key = f.read()
+    '''Read all data from file'''
 
-credentials = SignedJwtAssertionCredentials(
-    client_email,
-    private_key,
-    'https://www.googleapis.com/auth/drive')
+    def __init__(self):
+        self._folder_name = ''
+        self._file_name = ''
+        self._file_content = ''
+        super(File, self).__init__()
 
-http = httplib2.Http()
+    @property
+    def folder_name(self):
+        return self._folder_name
 
-http = credentials.authorize(http)
+    @folder_name.setter
+    def folder_name(self, value):
+        self._folder_name = value
+
+    @property
+    def file_name(self):
+        return self._file_name
+
+    @file_name.setter
+    def file_name(self, value):
+        self._file_name = value
+
+    @property
+    def file_content(self):
+        return self._file_content
+
+    @file_content.setter
+    def file_content(self, value):
+        self._file_content = value
 
 
-def create_public_folder(service, folder_name):
-    body = {
-        'title': folder_name,
-        'mimeType': 'application/vnd.google-apps.folder'
-    }
+class Authorize(object):
 
-    file = service.files().insert(body=body).execute()
+    '''Authrize http object'''
 
-    permission = {
-        'value': '',
-        'type': 'anyone',
-        'role': 'reader'
-    }
+    def __init__(self):
+        self._client_email = ''
+        self._private_key = ''
+        self._auth_scope = ''
+        super(Authorize, self).__init__()
 
-    service.permissions().insert(
-        fileId=file['id'], body=permission).execute()
+    @property
+    def client_email(self):
+        return self._client_email
 
-    return file
+    @client_email.setter
+    def client_email(self, value):
+        self._client_email = value
+
+    @property
+    def private_key(self):
+        return self._private_key
+
+    @private_key.setter
+    def private_key(self, value):
+        self._private_key = value
+
+    @property
+    def auth_scope(self):
+        return self._auth_scope
+
+    @auth_scope.setter
+    def auth_scope(self, value):
+        self._auth_scope = value
+
+    @property
+    def service(self):
+        credentials = SignedJwtAssertionCredentials(
+            self._client_email, self._private_key, self._auth_scope)
+        http = httplib2.Http()
+        http = credentials.authorize(http)
+        service = build('drive', 'v2', http=http)
+        return service
 
 
-drive_service = build('drive', 'v2', http=http)
+class Upload(File, Authorize):
 
-folder_id = create_public_folder(drive_service, 'public')['id']
-print(folder_id)
+    def __init__(self):
+        super(Upload, self).__init__()
 
-FILENAME = "document.txt"
+    def create_public_folder(self):
+        body = {
+            'title': self.folder_name,
+            'mimeType': 'application/vnd.google-apps.folder'
+        }
+        file_ = self.service.files().insert(body=body).execute()
 
-media_body = MediaFileUpload(FILENAME, mimetype='text/plain', resumable=True)
-body = {
-    'title': 'document2',
-    'description': 'A test document',
-    'mimeType': 'text/plain',
-    'parents': [
-        {
-            "kind": "drive#fileLink",
-            "id": folder_id,
-        },
-    ]
-}
-file = drive_service.files().insert(body=body, media_body=media_body).execute()
-# pprint.pprint(file)
-file_id = file['id']
+        permission = {
+            'value': '',
+            'type': 'anyone',
+            'role': 'reader'
+        }
 
-print('www.googledrive.com/host/' + folder_id + '/' + body['title'])
+        self.service.permissions().insert(
+            fileId=file_['id'], body=permission).execute()
+
+        return file_
+
+    def set_public_folder(self):
+        pass
+
+    def insert_file(self):
+        folder_id = self.create_public_folder()['id']
+        media_body = MediaFileUpload(
+            self.file_name,
+            mimetype='text/plain',
+            resumable=True)
+        body = {
+            'title': self.file_name,
+            'description': 'A test document',
+            'mimeType': 'text/plain',
+            'parents': [
+                {
+                    "kind": "drive#fileLink",
+                    "id": folder_id,
+                },
+            ]
+        }
+
+        file_ = self.service.files().insert(
+            body=body, media_body=media_body)
+        file_ = file_.execute()
+        print(
+            'www.googledrive.com/host/' +
+            folder_id +
+            '/' +
+            body['title']
+        )
+
+if __name__ == '__main__':
+
+    FOLDER_NAME = 'public'
+    FILE_NAME = 'test_document.txt'
+    FILE_CONTENT = ''
+    CLIENT_EMAIL = '911984682386-rr5rg1e4m5v6j0mk89jniqcon26pgjic@developer\
+    .gserviceaccount.com'
+    AUTH_SCOPE = 'https://www.googleapis.com/auth/drive'
+
+    with open("nudrive.pem") as f:
+        PRIVATE_KEY = f.read()
+
+    f = Upload()
+    f.folder_name = FOLDER_NAME
+    f.file_name = FILE_NAME
+    f.file_content = FILE_CONTENT
+    f.client_email = CLIENT_EMAIL
+    f.private_key = PRIVATE_KEY
+    f.auth_scope = AUTH_SCOPE
+    f.create_public_folder()
+    f.insert_file()
